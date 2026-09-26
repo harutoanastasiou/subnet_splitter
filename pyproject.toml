@@ -1,0 +1,14 @@
+[project]
+name = "subnet-splitter"
+version = "0.1.0"
+description = "Divide a given CIDR block into N equal-sized subnets or subnets sized for a host count."
+requires-python = ">=3.10"
+dependencies = []
+readme = "README.md"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
