@@ -28,3 +28,10 @@ split_for_hosts("10.0.0.0/24", 50)
 - Asking `split_into` for more subnets than the parent can hold raises `ValueError`. A /30, for instance, cannot be split into 8 pieces.
 - Asking `split_for_hosts` for more usable hosts than the parent can ever provide raises `ValueError`.
 - Both functions reject `bool` as a count argument, because `bool` is a subclass of `int` in Python and silently accepting `True` as `1` is a frequent source of bugs.
+
+## Design notes
+
+The window stores values eagerly rather than keeping running aggregates. Running
+sums drift with floating point over long streams, and recomputing from a small
+buffer is cheap enough that the drift is not worth the speed.
+
